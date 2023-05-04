@@ -68,7 +68,7 @@ def search_keywords(
         key_words, journals, year_begin, year_end, sort_mth, max_show,
         show_abstract, search_author, random_roll):
     if button_clicked:
-        data_load_state.markdown('Searching paper...')
+        data_load_state.markdown('Mencari paper...')
 
         # preliminary select on
         mask_jounral = df.journal.isin(journals)
@@ -236,7 +236,7 @@ def main():
 
     if not random_roll:
         key_words = form.text_input('Masukkan keyword judul atau abstrak (English)')
-        button_label = 'Search'
+        button_label = 'Cari'
     else:
         key_words = ""
         button_label = 'Roll a rondom paper'
@@ -245,7 +245,7 @@ def main():
     button_clicked = a1.form_submit_button(label=button_label)
     a2.markdown(
         """<div style="color: green; font-size: small; padding-bottom: 0;">
-        (see left sidebar for search help & journal abbrevs & <font color="blue">configs</font>!)
+        (Lihat Sidebar > untuk keterangan lebih lanjut & <font color="blue">konfigurasinya</font>!)
         </div>""",
         unsafe_allow_html=True)
 
@@ -276,7 +276,7 @@ def main():
                "survey": ['jep', 'jel', 'are', ]
                }
     js_cats_keys = list(js_cats.keys())
-    journals = form.multiselect("Journals",
+    journals = form.multiselect("Jurnal",
                                 js_cats_keys+js, js)  # js[:21] //
     # if selected journals include js_cats
     js_temp = set(journals) & set(js_cats_keys)
@@ -289,10 +289,10 @@ def main():
     year_max = 2023
 
     c1, c2, c3, c4 = form.columns(4)
-    year_begin = c1.number_input('Year from', value=1980, min_value=year_min, max_value=year_max)
-    year_end = c2.number_input('Year to', value=year_max, min_value=year_min, max_value=year_max)
-    sort_mth = c3.selectbox('Sort by', ['Most recent', 'Most early'], index=0)  # 'Most cited'
-    max_show = c4.number_input('Max. Shown', value=100, min_value=0, max_value=500)
+    year_begin = c1.number_input('Mulai Tahun', value=1980, min_value=year_min, max_value=year_max)
+    year_end = c2.number_input('Sampai Tahun', value=year_max, min_value=year_min, max_value=year_max)
+    sort_mth = c3.selectbox('Urut berdasarkan', ['Most recent', 'Most early'], index=0)  # 'Most cited'
+    max_show = c4.number_input('Jumlah Maksimal', value=100, min_value=0, max_value=500)
 
     data_load_state = st.empty()
 
