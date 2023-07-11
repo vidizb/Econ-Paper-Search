@@ -235,7 +235,7 @@ def main():
     form = st.form(key='search')
 
     if not random_roll:
-        key_words = form.text_input('Masukkan keyword judul atau abstrak (English)')
+        key_words = form.text_input('Dari Econ Paper Search - Masukkan keyword judul atau abstrak (English)')
         button_label = 'Cari'
     else:
         key_words = ""
